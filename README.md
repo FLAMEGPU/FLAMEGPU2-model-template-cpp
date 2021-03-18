@@ -1,7 +1,7 @@
 # FLAMEGPU2 Template Example
 This repository acts as an example to be used as a template for creating standalone FLAMEGPU2 projects.
 
-[FLAMEGPU2](https://github.com/FLAMEGPU/FLAMEGPU2_dev) is downloaded via CMake and configured as a dependency of the project.
+[FLAMEGPU2](https://github.com/FLAMEGPU/FLAMEGPU2) is downloaded via CMake and configured as a dependency of the project.
 
 Currently, it uses the version of FLAMEGPU2 from master, this can be changed locally by setting the CMake variable `FLAMEGPU2_Version` to point to a different git branch or tag. You can also change it for all users, by changing `cmake/flamegpu2.cmake:5` which provides the default value.
 

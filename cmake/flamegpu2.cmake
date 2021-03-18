@@ -7,7 +7,7 @@ set(FLAMEGPU2_Version "master" CACHE STRING "Git branch or tag to use")
 # Always use most recent, simply recommend users that they may wish to do otherwise
 FetchContent_Declare(
     flamegpu2
-    GIT_REPOSITORY https://github.com/FLAMEGPU/FLAMEGPU2_dev.git
+    GIT_REPOSITORY https://github.com/FLAMEGPU/FLAMEGPU2.git
     GIT_TAG        ${FLAMEGPU2_Version}
     GIT_SHALLOW    1
     GIT_PROGRESS   ON
