@@ -10,7 +10,7 @@ FLAMEGPU_AGENT_FUNCTION(output_message, MsgNone, MsgSpatial3D) {
 }
 FLAMEGPU_AGENT_FUNCTION(move, MsgSpatial3D, MsgNone) {
     const int ID = FLAMEGPU->getVariable<int>("id");
-    const float REPULSE_FACTOR = FLAMEGPU->environment.get<float>("repulse");
+    const float REPULSE_FACTOR = FLAMEGPU->environment.getProperty<float>("repulse");
     const float RADIUS = FLAMEGPU->message_in.radius();
     float fx = 0.0;
     float fy = 0.0;
@@ -94,7 +94,7 @@ int main(int argc, const char ** argv) {
      */
     {
         EnvironmentDescription &env = model.Environment();
-        env.add("repulse", 0.05f);
+        env.newProperty("repulse", 0.05f);
     }
 
     /**
@@ -116,7 +116,7 @@ int main(int argc, const char ** argv) {
     /**
      * Create Model Runner
      */
-    CUDAAgentModel cuda_model(model);
+    CUDASimulation cuda_model(model, argc, argv);
 
     /**
      * Create visualisation
@@ -165,14 +165,13 @@ int main(int argc, const char ** argv) {
     /**
      * Initialisation
      */
-    cuda_model.initialise(argc, argv);
-    if (cuda_model.getSimulationConfig().xml_input_file.empty()) {
+    if (cuda_model.getSimulationConfig().input_file.empty()) {
         // Currently population has not been init, so generate an agent population on the fly
         std::default_random_engine rng;
         std::uniform_real_distribution<float> dist(0.0f, ENV_MAX);
-        AgentPopulation population(model.Agent("Circle"), AGENT_COUNT);
+        AgentVector population(model.Agent("Circle"), AGENT_COUNT);
         for (unsigned int i = 0; i < AGENT_COUNT; i++) {
-            AgentInstance instance = population.getNextInstance();
+            AgentVector::Agent instance = population[i];
             instance.setVariable<int>("id", i);
             instance.setVariable<float>("x", dist(rng));
             instance.setVariable<float>("y", dist(rng));
