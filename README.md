@@ -1,28 +1,28 @@
-# FLAMEGPU2 Template Example
-This repository acts as an example to be used as a template for creating standalone FLAMEGPU2 projects.
+# FLAME GPU 2 Template Example
+This repository acts as an example to be used as a template for creating standalone FLAME GPU 2 projects.
 
 [FLAMEGPU2](https://github.com/FLAMEGPU/FLAMEGPU2) is downloaded via CMake and configured as a dependency of the project.
 
-Currently, it uses the version of FLAMEGPU2 from master, this can be changed locally by setting the CMake variable `FLAMEGPU2_Version` to point to a different git branch or tag. You can also change it for all users, by changing `cmake/flamegpu2.cmake:5` which provides the default value.
+Currently, it uses the version of FLAME GPU 2 from master, this can be changed locally by setting the CMake variable `FLAMEGPU2_Version` to point to a different git branch or tag. You can also change it for all users, by changing `cmake/flamegpu2.cmake:5` which provides the default value.
+
+For details on how to develop a model using FLAME GPU 2, refer to the [user guide & api documentation](https://docs.flamegpu.com/).
 
 ## Dependencies
 
-The dependencies below are required for building FLAME GPU 2.
-
-Only documentation can be built without the required dependencies (however Doxygen is still required).
+The dependencies below are required for building FLAME GPU 2 projects.
 
 ### Required
 
 * [CMake](https://cmake.org/) >= 3.12
   * CMake 3.16 is known to have issues on certain platforms
-* [CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit) >= 9.0
+* [CUDA Toolkit](https://developer.nvidia.com/cuda-toolkit) >= 10.0
 * [git](https://git-scm.com/): Required by CMake for downloading dependencies
 * *Linux:*
   * [make](https://www.gnu.org/software/make/)
   * gcc/g++ >= 6 (version requirements [here](https://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#system-requirements))
       * gcc/g++ >= 7 required for the test suite 
 * *Windows:*
-  * Visual Studio 2015 or higher (2019 preferred)
+  * Visual Studio 2015 or higher (2019 recommended)
 
 
 ## Building FLAME GPU 2
