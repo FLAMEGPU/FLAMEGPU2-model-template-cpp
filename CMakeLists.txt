@@ -7,17 +7,10 @@ project(flamegpu2_example CUDA CXX)
 
 # Our core dependency is FLAMEGPU2 lib, first lets find it
 include(${CMAKE_CURRENT_LIST_DIR}/cmake/flamegpu2.cmake)
-# Now disable extra bells/whistles and add it as s dependency
-set(BUILD_ALL_EXAMPLES OFF CACHE BOOL "-")
+# Now disable extra bells/whistles and add it as a dependency
+set(NO_EXAMPLES ON CACHE INTERNAL "-")
 set(BUILD_TESTS OFF CACHE BOOL "-")
 add_subdirectory(${FLAMEGPU_ROOT})
-mark_as_advanced(FORCE BUILD_FLAMEGPU2)
-mark_as_advanced(FORCE BUILD_ALL_EXAMPLES)
-mark_as_advanced(FORCE BUILD_EXAMPLE_HOST_FUNCTIONS)
-mark_as_advanced(FORCE BUILD_EXAMPLE_GAME_OF_LIFE)
-mark_as_advanced(FORCE BUILD_EXAMPLE_CIRCLES_BRUTE_FORCE)
-mark_as_advanced(FORCE BUILD_EXAMPLE_CIRCLES_SPATIAL_3D)
-mark_as_advanced(FORCE BUILD_EXAMPLE_RTC_EXAMPLE)
 mark_as_advanced(FORCE BUILD_TESTS)
 
 # Include common rules.
