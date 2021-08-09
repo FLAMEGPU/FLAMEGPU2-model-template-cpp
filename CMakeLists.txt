@@ -7,10 +7,14 @@ project(flamegpu2_example CUDA CXX)
 # Option to enable/disable building the visualisation
 option(VISUALISATION "Enable visualisation support" OFF)
 
+# Optionaly set the version of flamegpu which should be used.
+# Use a branch name such as `master`, or a tagged version such as `v2.0.0-alpha` 
+set(FLAMEGPU_VERSION "master" CACHE STRING "Git branch or tag to use")
+
 # Our core dependency is FLAMEGPU2 lib, first lets find it
 include(${CMAKE_CURRENT_LIST_DIR}/cmake/flamegpu2.cmake)
 
-# Include common rules.
+# Include common rules from the main repositorys CMake
 include(${FLAMEGPU_ROOT}/cmake/common.cmake)
 
 # Define output location of binary files
