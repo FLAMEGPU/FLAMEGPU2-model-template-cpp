@@ -17,9 +17,6 @@ include(${CMAKE_CURRENT_LIST_DIR}/cmake/flamegpu2.cmake)
 # Include common rules from the main repositorys CMake
 include(${FLAMEGPU_ROOT}/cmake/common.cmake)
 
-# Define output location of binary files
-SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/bin/${CMAKE_BUILD_TYPE}/)
-
 # Manually list all of the files which require building or influence re-building.
 SET(ALL_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cu
