@@ -3,7 +3,7 @@ cmake_policy(SET CMP0079 NEW)
 
 # If overridden by the user, attempt to use that
 if (FLAMEGPU_ROOT)
-# Look for the main visualisation header to get the abs path, but only look relative to the hints/paths, no cmake defaults (for now)
+# Look for the main flamegpu.h header to get the abs path, but only look relative to the hints/paths, no cmake defaults. Do not cache the result.
     set(FLAMEGPU_INCLUDE_HEADER_FILE include/flamegpu/flamegpu.h)
     find_path(FLAMEGPU_ROOT_ABS
         NAMES
@@ -13,6 +13,7 @@ if (FLAMEGPU_ROOT)
         PATHS
             ${FLAMEGPU_ROOT}
         NO_DEFAULT_PATH
+        NO_CACHE
     )
     # If found, use the local vis, otherwise error.
     if(FLAMEGPU_ROOT_ABS)
