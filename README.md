@@ -98,7 +98,6 @@ cmake --build . --config Release --target ALL_BUILD --verbose
 
 | Option                   | Value             | Description                                                                                                |
 | ------------------------ | ----------------- | ---------------------------------------------------------------------------------------------------------- |
-| `FLAMEGPU_VERSION`       | `v2.0.0-alpha.1`  | Git tag or commit hash of the [FLAMEGPU/FLAMEGPU2](https://github.com/FLAMEGPU/FLAMEGPU2) repository to be fetched |
 | `CMAKE_BUILD_TYPE`       | `Release`/`Debug` | Select the build configuration for single-target generators such as `make`                                 |
 | `SEATBELTS`              | `ON`/`OFF`        | Enable / Disable additional runtime checks which harm performance but increase usability. Default `ON`     |
 | `CUDA_ARCH`              | `"52 60 70 80"`   | Select [CUDA Compute Capabilities](https://developer.nvidia.com/cuda-gpus) to build/optimise for, as a space or `;` separated list. Defaults to `""` |
@@ -106,6 +105,8 @@ cmake --build . --config Release --target ALL_BUILD --verbose
 | `VISUALISATION_ROOT`     | `path/to/vis`     | Provide a path to a local copy of the [FLAMEGPU/FLAMEGPU2-visualiser](https://github.com/FLAMEGPU/FLAMEGPU2-visualiser) repository |
 | `USE_NVTX`               | `ON`/`OFF`        | Enable NVTX markers for improved profiling. Default `OFF`                                                  |
 | `WARNINGS_AS_ERRORS`     | `ON`/`OFF`        | Promote compiler/tool warnings to errors are build time. Default `OFF`                                     |
+| `FLAMEGPU_VERSION`       | `v2.0.0-alpha.2`  | Git tag or commit hash of the [FLAMEGPU/FLAMEGPU2](https://github.com/FLAMEGPU/FLAMEGPU2) repository to be fetched |
+| `FLAMEGPU_ROOT`          | `path/to/FLAMEGPU2` | Path to local copy of [FLAMEGPU/FLAMEGPU2](https://github.com/FLAMEGPU/FLAMEGPU2), to be used rather than fetching from github during CMake configuration. Use `-DFLAMEGPU_ROOT=` to revert to fetching from GitHub.
 
 See the [FLAMEGPU/FLAMEGPU2 Readme](https://github.com/FLAMEGPU/FLAMEGPU2#cmake-configuration-options) for a full list of CMake options for the main repository.
 
