@@ -8,8 +8,8 @@ project(example CUDA CXX)
 option(VISUALISATION "Enable visualisation support" OFF)
 
 # Optionaly set the version of flamegpu which should be used.
-# Use a branch name such as `master`, or a tagged version such as `v2.0.0-alpha` 
-set(FLAMEGPU_VERSION "v2.0.0-alpha.2")
+# Use a branch name such as `master`, or a tagged version such as `v2.0.0-alpha`
+set(FLAMEGPU_VERSION "v2.0.0-alpha.2" CACHE STRING "FLAMEGPU/FLAMEGPU2 git branch or tag to use")
 # If the above version is a hash instead, also set FLAMEGPU_VERSION_ALLOW_HASH to ON
 # set(FLAMEGPU_VERSION_ALLOW_HASH "ON")
 
