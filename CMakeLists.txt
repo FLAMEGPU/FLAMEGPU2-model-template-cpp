@@ -6,6 +6,9 @@ set(FLAMEGPU_VERSION "v2.0.0-rc" CACHE STRING "FLAMEGPU/FLAMEGPU2 git branch or 
 # If the above version is a hash instead, also set FLAMEGPU_VERSION_ALLOW_HASH to ON
 # set(FLAMEGPU_VERSION_ALLOW_HASH "ON")
 
+# Manually specify the FLAMEGPU_VISUALISATION option to provide it prior to original configuration and allow the default to be overridden in the downstream project
+option(FLAMEGPU_VISUALISATION "Enable FLAMEGPU visualisation support" OFF)
+
 # Our core dependency is FLAMEGPU2 lib, first lets find it
 include(${CMAKE_CURRENT_LIST_DIR}/cmake/flamegpu2.cmake)
 

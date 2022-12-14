@@ -15,14 +15,13 @@ if (FLAMEGPU_ROOT)
         NO_DEFAULT_PATH
         NO_CACHE
     )
-    # If found, use the local vis, otherwise error.
+    # If found, use the local flamegpu, otherwise error.
     if(FLAMEGPU_ROOT_ABS)
         # If the correct flamegpu root was found, output a successful status message
         message(STATUS "Found FLAMEGPU_ROOT: ${FLAMEGPU_ROOT_ABS} (${FLAMEGPU_ROOT})")
         # update the value to the non abs version, in local and parent scope.
         set(FLAMEGPU_ROOT "${FLAMEGPU_ROOT_ABS}")
-        # set(FLAMEGPU_ROOT "${FLAMEGPU_ROOT_ABS}" PARENT_SCOPE) # Parent scope does not exist
-        # And set up the visualisation build 
+        # And set up the flamegpu build 
         add_subdirectory(${FLAMEGPU_ROOT_ABS} ${CMAKE_CURRENT_BINARY_DIR}/_deps/flamegpu2-build)
     else()
         # Send a fatal error if the flamegpu root passed is invalid.
@@ -64,15 +63,9 @@ else()
     FetchContent_GetProperties(flamegpu2)
     if(NOT flamegpu2_POPULATED)
         FetchContent_Populate(flamegpu2)   
-
-        # Now disable extra bells/whistles and add flamegpu2 as a dependency
-        set(NO_EXAMPLES ON CACHE INTERNAL "-")
-        set(BUILD_TESTS OFF CACHE BOOL "-")
         mark_as_advanced(FORCE BUILD_TESTS)
-
         # Add the subdirectory
         add_subdirectory(${flamegpu2_SOURCE_DIR} ${flamegpu2_BINARY_DIR})
-
         # Add flamegpu2' expected location to the prefix path.
         set(CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH};${flamegpu2_SOURCE_DIR}/cmake")
     endif()
