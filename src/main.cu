@@ -1,3 +1,4 @@
+#include <cfloat>
 #include "flamegpu/flamegpu.h"
 
 FLAMEGPU_AGENT_FUNCTION(outputMessage, flamegpu::MessageNone, flamegpu::MessageSpatial3D) {
