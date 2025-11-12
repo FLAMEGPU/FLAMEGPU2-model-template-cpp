@@ -209,4 +209,4 @@ Alternatively, [CITATION.cff](https://github.com/FLAMEGPU/FLAMEGPU2/blob/master/
 
 ## License
 
-FLAME GPU is distributed under the [MIT Licence](https://github.com/FLAMEGPU/FLAMEGPU2/blob/master/LICENSE.md).
+FLAME GPU 2 is available under a dual licence model. This repository is not included within the main library distribution and is licenced under only [AGPL-3.0-only license](https://github.com/FLAMEGPU/FLAMEGPU2-model-template-cpp/blob/master/LICENSE.MD) for open source usage.
