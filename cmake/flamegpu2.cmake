@@ -1,5 +1,6 @@
+# Minimum CMake version 3.25.2 for CUDA --std=c++20
+cmake_minimum_required(VERSION 3.25.2...4.1.1 FATAL_ERROR)
 include(FetchContent)
-cmake_policy(SET CMP0079 NEW)
 
 # If overridden by the user, attempt to use that
 if (FLAMEGPU_ROOT)
@@ -43,11 +44,12 @@ else()
         set(FLAMEGPU_REPOSITORY "https://github.com/FLAMEGPU/FLAMEGPU2.git" CACHE STRING "Remote Git Repository for FLAME GPU 2+")
     endif()
     
-    # CMake does not support simple negation, so map to a differnt non cache variable to invert to the correct truthyness for GIT_SHALLOW
+    # CMake does not support simple negation, so map to a different non cache variable to invert to the correct truthyness for GIT_SHALLOW
     set(USE_GIT_SHALLOW "ON")
     if(FLAMEGPU_VERSION_ALLOW_HASH)
         set(USE_GIT_SHALLOW OFF)
     endif()
+
     # Declare the fetch content target usign the above optional variables
     FetchContent_Declare(
         flamegpu2
@@ -59,17 +61,8 @@ else()
     )
     unset(USE_GIT_SHALLOW)
 
-    # Fetch and populate the content if required.
-    FetchContent_GetProperties(flamegpu2)
-    if(NOT flamegpu2_POPULATED)
-        FetchContent_Populate(flamegpu2)   
-        mark_as_advanced(FORCE BUILD_TESTS)
-        # Add the subdirectory
-        add_subdirectory(${flamegpu2_SOURCE_DIR} ${flamegpu2_BINARY_DIR})
-        # Add flamegpu2' expected location to the prefix path.
-        set(CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH};${flamegpu2_SOURCE_DIR}/cmake")
-    endif()
-
+    # Fetch and add_subdirectory
+    FetchContent_MakeAvailable(flamegpu2)
     message(STATUS "Found FLAMEGPU2 ${flamegpu2_SOURCE_DIR}")
     set(FLAMEGPU_ROOT ${flamegpu2_SOURCE_DIR})
 endif()
